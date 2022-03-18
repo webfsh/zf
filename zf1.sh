@@ -10,7 +10,7 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 if [ $? -ne 0 ]; then
     echo -e "net.ipv4.ip_forward=1" >> /etc/sysctl.conf && sysctl -p
 fi
-yum install -y  nftables
+apt install -y  nftables
 #2、下载可执行文件并赋予执行权限；
 
 wget -O /usr/local/bin/nat https://getzhuji.com/wp-content/uploads/sh/dnat
