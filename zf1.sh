@@ -1,9 +1,10 @@
-#更新
-apt update -y
 #以下一键完成
 service firewalld stop
+
 systemctl disable firewalld
+
 setenforce 0
+
 sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config  
 sed -n '/^net.ipv4.ip_forward=1/'p /etc/sysctl.conf | grep -q "net.ipv4.ip_forward=1"
 echo 1 > /proc/sys/net/ipv4/ip_forward
