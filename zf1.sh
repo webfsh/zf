@@ -1,4 +1,6 @@
+#更新
 apt update -y
+#以下一键完成
 service firewalld stop
 systemctl disable firewalld
 setenforce 0
@@ -9,7 +11,7 @@ if [ $? -ne 0 ]; then
     echo -e "net.ipv4.ip_forward=1" >> /etc/sysctl.conf && sysctl -p
 fi
 apt install -y  nftables
-#下一步
+#
 # 必须是root用户
 # sudo su
 
@@ -42,5 +44,5 @@ systemctl enable nat
 cat > /etc/nat.conf <<EOF
 SINGLE,5555,5555,asia2.ethermine.org
 EOF
-
+# 重启
 systemctl start nat
